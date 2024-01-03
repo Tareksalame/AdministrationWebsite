@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.34f14c7f.css",
+    "main.js": "/static/js/main.6cb38eec.js",
+    "static/js/787.71064c30.chunk.js": "/static/js/787.71064c30.chunk.js",
+    "static/media/zero.png": "/static/media/zero.6904677d22de35998756.png",
+    "static/media/roll.jpg": "/static/media/roll.ef759b31498033bf62c4.jpg",
+    "static/media/mkt3.jpg": "/static/media/mkt3.bbd585182479f3fda638.jpg",
+    "static/media/mix.jpg": "/static/media/mix.43b90996d4cbcf4d6a25.jpg",
+    "static/media/5obz.jpg": "/static/media/5obz.f4d26e6a26a20ed21c57.jpg",
+    "static/media/fanta.jpeg": "/static/media/fanta.e291845837decd1f85d5.jpeg",
+    "static/media/No.png": "/static/media/No.c5641ec1eb969a905842.png",
+    "static/media/cola.jpeg": "/static/media/cola.e5ad6c463ba4a04d18da.jpeg",
+    "static/media/checked.png": "/static/media/checked.6f298cca57a5a8b36055.png",
+    "static/media/water.jpg": "/static/media/water.9babbdc699f5ac1bbe26.jpg",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.34f14c7f.css.map": "/static/css/main.34f14c7f.css.map",
+    "main.6cb38eec.js.map": "/static/js/main.6cb38eec.js.map",
+    "787.71064c30.chunk.js.map": "/static/js/787.71064c30.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.34f14c7f.css",
+    "static/js/main.6cb38eec.js"
+  ]
+}
