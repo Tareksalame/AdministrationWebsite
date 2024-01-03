@@ -1,0 +1,212 @@
+.App {
+  text-align: center;
+  font-family: 'Cairo', sans-serif;
+}
+:root {
+  --primary-color: #3498db;
+  --mainText-color: #2c3e50;
+  --secondryText-color:#555555;
+  --Link-color :#e74c3c;
+  --success-color:#27ae60;
+  --warning-color:#e67e22;
+  --error-color:#c0392b;
+
+}
+body {
+  background-color: #ecf0f1;
+}
+
+header {
+  background-color: #2980b9;
+  color: #fff;
+}
+/* __________________________________HeaderMenuHomePage_____________________________________-- */
+.HeaderMenuHomePage
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background-color: #2980b9;
+  padding-top: 10%;
+}
+.HeaderMenuHomePage button
+{
+  width: 120px;
+  height: 120px;
+  border: none;
+  font-weight: 700;
+  font-size: 20px;
+  font-family: 'Cairo', sans-serif;
+  background-color:var(--mainText-color);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  outline: none;
+  border-radius: 10px;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  color: var(--Link-color);
+
+}
+/* ____________________________________________OrdersComponentMainDiv_______________________________________ */
+.OrdersComponentMainDiv
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.OrdersShowDiv
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* ______________________________________OrderComponentMainDiv_____________________________________ */
+.OrderComponentMainDiv
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 5px solid var(--primary-color);
+
+}
+.NamePhoneCityOrderComponentDiv
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.NamePhoneCityOrderComponentDiv div
+{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.NamePhoneCityOrderComponentDiv h1
+{
+  font-size: 18px;
+  font-family: 'Cairo', sans-serif;
+  color: var(--mainText-color);
+  margin-right: 2%;
+}
+.NamePhoneCityOrderComponentDiv h2
+{
+  font-size: 15px;
+  font-family: 'Cairo', sans-serif;
+  color: var(--secondryText-color);
+  margin-left: 2%;
+}
+/* __________________________________________DetailsMainDiv__________________________________ */
+.DetailsMainDiv
+{
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 85%;
+  border: 5px solid var(--mainText-color);
+  border-radius: 10px;
+  margin-bottom: 5%;
+}
+.CartNamePriceAddDiv
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-bottom: 5px solid var(--mainText-color);
+
+}
+.AdditionsDiv
+{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.AdditionsDiv h4
+{
+  font-size: 18px;
+  font-family: 'Cairo', sans-serif;
+  color: var(--mainText-color);
+  margin-right: 3%;
+}
+.AdditionsDiv h3
+{
+  font-size: 15px;
+  font-family: 'Cairo', sans-serif;
+  color: var(--secondryText-color);
+  margin-left: 3%;
+}
+.NamePriceCountRowDiv
+{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.NamePriceCountRowDiv h2
+{
+  font-size: 18px;
+  font-family: 'Cairo', sans-serif;
+  color: var(--mainText-color);
+  margin-right: 3%;
+}
+.NamePriceCountRowDiv h3
+{
+  font-size: 15px;
+  font-family: 'Cairo', sans-serif;
+  color: var(--secondryText-color);
+  margin-left: 3%;
+}
+/* __________________________________ShowDetailsButton_____________________________________ */
+.ShowDetailsButton
+{
+  width: 70%;
+  font-weight: 700;
+  font-size: 25px;
+  font-family: 'Cairo', sans-serif;
+  background-color:var(--mainText-color);
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  outline: none;
+  height: 50px;
+  border-radius: 10px;
+  margin-bottom: 5%;
+  margin-top: 5%;
+
+  color:var(--Link-color);
+}
+/* ______________________________________PendingInPreparationButtons___________________________________ */
+.PendingInPreparationButtons
+{
+  width: 50%;
+  font-weight: 700;
+  font-size: 25px;
+  font-family: 'Cairo', sans-serif;
+  background-color:var(--mainText-color);
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  outline: none;
+  height: 50px;
+  border-radius: 10px;
+  margin-bottom: 5%;
+  margin-top: 5%;
+
+  color:var(--Link-color);
+}
