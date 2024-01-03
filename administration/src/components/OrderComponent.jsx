@@ -112,7 +112,7 @@ export default function OrderComponent(props) {
         }
         else if(props.val.OrderStatus === 'In Preparation')
         {
-            return <button className='PendingInPreparationButtons'>
+            return <button style={{fontSize:'15px'}} className='PendingInPreparationButtons'>
                 الطلبية جاهزة
             </button>
         }
