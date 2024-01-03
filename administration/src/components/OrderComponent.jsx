@@ -4,7 +4,7 @@ import userContext from '../userContext';
 
 export default function OrderComponent(props) {
     const[flag,setFlag] = useState(false);
-    const {orders,setOrders} = useContext(userContext) 
+    const {orders,setOrders,setInPreparationOrders} = useContext(userContext) 
     const[display,setDisplay] = useState('none')
     const[ShowRelease,setShowRelease] = useState('تفاصيل الطلبية')
     const PhoneNumberLink = 'tel:' + props.val.phoneNumber
@@ -53,6 +53,7 @@ export default function OrderComponent(props) {
                     }
                 })}
                 </div>
+
             </div>
         })
     }
@@ -65,6 +66,10 @@ export default function OrderComponent(props) {
         else if(props.val.OrderStatus === 'In Preparation')
         {
             return <h2 style={{fontSize:'25',color:'#e67e22',marginLeft:'0px',marginBottom:'3%'}}>الطلبية قيد التحضير</h2>
+        }
+        else if(props.val.OrderStatus === 'Ready')
+        {
+            return <h2 style={{fontSize:'25',color:'#27ae60',marginLeft:'0px',marginBottom:'3%'}}>الطلبية جاهزة</h2>
         }
     }
 
@@ -100,7 +105,34 @@ export default function OrderComponent(props) {
             }).catch((err)=>{return err})
     }
 
-
+    
+    const OrderIsReady = ()=>
+    {
+        fetch('/OrderIsReady', 
+            {
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                method:'post',
+                body:JSON.stringify({
+                    OrderNumber:props.val.OrderNumber,
+                    OrderStatus:'Ready'
+                })
+            }).then((res)=>{return res.json()})
+            .then((data)=>
+            {
+                if(data ==='Order not found')
+                {
+                    alert('الطلبية غير موجودة')
+                }
+                else
+                {
+                    fetch('/GetInPreparationOrders').then((res)=>{return res.json()}).then((data) => {
+                        setInPreparationOrders([...data])
+                    }).catch((err)=>{return err})
+                }
+            }).catch((err)=>{return err})
+    }
 
     const inPreparation =()=>
     {
@@ -112,7 +144,7 @@ export default function OrderComponent(props) {
         }
         else if(props.val.OrderStatus === 'In Preparation')
         {
-            return <button style={{fontSize:'15px'}} className='PendingInPreparationButtons'>
+            return <button onClick={OrderIsReady} style={{fontSize:'15px'}} className='PendingInPreparationButtons'>
                 الطلبية جاهزة
             </button>
         }
@@ -148,7 +180,12 @@ export default function OrderComponent(props) {
         <h1>السعر النهائي + التوصيل</h1>
         <h2>{props.val.FinalPrice}</h2>
         </div>
-
+        <div>
+            <h1>ملاحظات</h1>
+            <textarea  name="textarea" cols="30" rows="4">
+                {props.val.Notes}
+            </textarea>
+        </div>
         </div>
         <button className='ShowDetailsButton' onClick={showDetails}>{ShowRelease}</button>
         <div className='DetailsMainDiv' style={{display:display}}>

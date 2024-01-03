@@ -5,7 +5,7 @@ import userContext from '../userContext';
 
 export default function HomePage() {
 
-    const{orders, setOrders,inPreparationOrders,setInPreparationOrders} = useContext(userContext)
+    const{orders, setOrders,inPreparationOrders,setInPreparationOrders,ReadyOrders,setReadyOrders} = useContext(userContext)
 
     const nav = useNavigate()
 
@@ -21,13 +21,22 @@ export default function HomePage() {
         }).catch((err)=>{return err})
             nav('/InPreparationOrders')
       };
+      const fetchReadyOrders = () => {
+        fetch('/GetReadyOrders').then((res)=>{return res.json()}).then((data) => {
+            setReadyOrders([...data])
+        }).catch((err)=>{return err})
+            nav('/ReadyOrders')
+      };
 
 
 
   return (
     <div className='HeaderMenuHomePage'>
+        
         <button onClick={fetchOrders}>الطلبيات</button>
         <button onClick={fetchInPreparationOrders}>قيد التحضير</button>
+        <button onClick={fetchReadyOrders}>جاهزة</button>
+
     </div>
   )
 }

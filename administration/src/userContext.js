@@ -17,6 +17,13 @@ export const UsersProvider = ({children})=>
 {
     const [orders, setOrders] = useState([]);
     const[inPreparationOrders,setInPreparationOrders] = useState([])
+    const[ReadyOrders,setReadyOrders] = useState([])
+
+
+
+
+
+
     const [mealIndex,setMealIndex] = useState(null)
     const [drinkIndex,setDrinkIndex] = useState(null)
     const [cart,setCart] = useState([])
@@ -100,7 +107,8 @@ const calculateDistance = () => {
 
 
     return (
-    <userContext.Provider value={{inPreparationOrders,setInPreparationOrders,orders, setOrders,OrderNumber,setOrderNumber,
+    <userContext.Provider value={{ReadyOrders,setReadyOrders,
+      inPreparationOrders,setInPreparationOrders,orders, setOrders,OrderNumber,setOrderNumber,
         FinalPrice,SetFinalPrice,calculateDistance,FinalCart,setFinalCart,
     name,setName,PhoneNumber,setPhoneNumber,City,setCity,Email,setEmail,Notes,setNotes,
     additionsMenu,cartArr,cart,setCart,drinkIndex,setDrinkIndex,mealIndex,setMealIndex,mealsMenu,drinkMenu,distance,
