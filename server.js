@@ -59,6 +59,16 @@ app.get('/GetReadyOrders', async(req,res)=>
     res.json(temp)
 })
 
+app.get('/GetReadyOrdersShipping', async(req,res)=>
+{
+    let temp = await OrderModel.find({
+        TakeAwayOrShipping:"shipping",
+        OrderStatus:"Ready"
+    });
+    res.json(temp)
+})
+
+
 app.post('/BuyNow',async(req,res)=>
 {
     let name = req.body.name;
@@ -126,6 +136,31 @@ app.post('/OrderIsReady', async (req, res) => {
     let city = req.body.City;
     let OrderNumber = req.body.OrderNumber;
     let OrderStatus = 'Ready';
+
+        // Find the order based on multiple criteria and update the OrderStatus
+        const updatedOrder = await OrderModel.findOneAndUpdate(
+            {
+                OrderNumber: OrderNumber
+            },
+            { $set: { OrderStatus: OrderStatus } },
+        );
+
+        if (updatedOrder) {
+            // If the order is found and updated successfully
+            res.json(updatedOrder);
+        } else {
+            // If the order with the specified criteria is not found
+            res.status(404).json('Order not found');
+        }
+});
+
+
+app.post('/DeliveredOrder', async (req, res) => {
+    let name = req.body.name;
+    let phoneNumber = req.body.PhoneNumber;
+    let city = req.body.City;
+    let OrderNumber = req.body.OrderNumber;
+    let OrderStatus = 'Delivered';
 
         // Find the order based on multiple criteria and update the OrderStatus
         const updatedOrder = await OrderModel.findOneAndUpdate(

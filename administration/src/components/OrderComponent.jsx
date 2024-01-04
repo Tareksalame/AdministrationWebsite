@@ -5,7 +5,7 @@ import waze from '../images/wazeicon.png'
 
 export default function OrderComponent(props) {
     const[flag,setFlag] = useState(false);
-    const {orders,setOrders,setInPreparationOrders} = useContext(userContext) 
+    const {orders,setOrders,setInPreparationOrders,setReadyOrders,setReadyOrdersShipping} = useContext(userContext) 
     const[display,setDisplay] = useState('none')
     const[ShowRelease,setShowRelease] = useState('تفاصيل الطلبية')
     const PhoneNumberLink = 'tel:' + props.val.phoneNumber
@@ -142,6 +142,65 @@ export default function OrderComponent(props) {
             }).catch((err)=>{return err})
     }
 
+
+    const DeliveredOrder = ()=>
+    {
+        fetch('/DeliveredOrder', 
+            {
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                method:'post',
+                body:JSON.stringify({
+                    OrderNumber:props.val.OrderNumber,
+                    OrderStatus:'Delivered'
+                })
+            }).then((res)=>{return res.json()})
+            .then((data)=>
+            {
+                if(data ==='Order not found')
+                {
+                    alert('الطلبية غير موجودة')
+                }
+                else
+                {
+                    fetch('/GetReadyOrders').then((res)=>{return res.json()}).then((data) => {
+                        setReadyOrders([...data])
+                    }).catch((err)=>{return err})
+                }
+            }).catch((err)=>{return err})
+    }
+
+
+    const DeliveredOrderShipping = ()=>
+    {
+        fetch('/DeliveredOrder', 
+            {
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                method:'post',
+                body:JSON.stringify({
+                    OrderNumber:props.val.OrderNumber,
+                    OrderStatus:'Delivered'
+                })
+            }).then((res)=>{return res.json()})
+            .then((data)=>
+            {
+                if(data ==='Order not found')
+                {
+                    alert('الطلبية غير موجودة')
+                }
+                else
+                {
+                    fetch('/GetReadyOrdersShipping').then((res)=>{return res.json()}).then((data) => {
+                        setReadyOrdersShipping([...data])
+                    }).catch((err)=>{return err})
+                }
+            }).catch((err)=>{return err})
+    }
+
+
     const inPreparation =()=>
     {
         if(props.val.OrderStatus === 'Pending')
@@ -156,14 +215,30 @@ export default function OrderComponent(props) {
                 الطلبية جاهزة
             </button>
         }
-        else if(props.val.OrderStatus === 'In Preparation' || props.val.TakeAwayOrShipping === 'shipping')
+        else if(props.val.OrderStatus === 'Ready' && props.val.TakeAwayOrShipping === 'shipping')
         {
-            return <button onClick={openInWaze} style={{width:'60px',height:'60px',padding:'2%'}} className='PendingInPreparationButtons'>
+            return <div style={{display:'flex',flexDirection:'row',justifyContent:'space-around',alignItems:'center',width:'50%'}}>
+                <button onClick={DeliveredOrderShipping}  style={{fontSize:'15px',height:'60px'}} className='PendingInPreparationButtons'>
+                تم تسليم الطلبية
+            </button>
+             <button onClick={openInWaze} style={{width:'60px',height:'60px',padding:'2%'}} className='PendingInPreparationButtons'>
                 <img width={'90%'} src={waze} alt="waze" />
             </button>
+            </div>
+        }
+        else if(props.val.OrderStatus === 'Ready' && props.val.TakeAwayOrShipping === 'Take Away')
+        {
+            return <button onClick={DeliveredOrder}  style={{fontSize:'15px'}} className='PendingInPreparationButtons'>
+            تم تسليم الطلبية
+        </button>
         }
 
     }
+
+
+
+
+
   return (
     <div className='OrderComponentMainDiv'>
         <div className='NamePhoneCityOrderComponentDiv'>
@@ -197,7 +272,7 @@ export default function OrderComponent(props) {
         </div>
         <div>
             <h1>ملاحظات</h1>
-            <textarea  name="textarea" cols="30" rows="4">
+            <textarea disabled  name="textarea" cols="30" rows="4">
                 {props.val.Notes}
             </textarea>
         </div>
