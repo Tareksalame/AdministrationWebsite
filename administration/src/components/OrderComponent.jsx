@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useContext } from 'react';
 import userContext from '../userContext';
+import waze from '../images/wazeicon.png'
 
 export default function OrderComponent(props) {
     const[flag,setFlag] = useState(false);
@@ -25,6 +26,13 @@ export default function OrderComponent(props) {
 
         }
     }
+
+    const openInWaze = () => {
+        if (props.val.Location) {
+          const url = `https://waze.com/ul?ll=${props.val.Location.latitude},${props.val.Location.longitude}&navigate=yes`;
+          window.open(url, '_blank');
+        }
+      };
 
     const DetailsOfCart = ()=>
     {
@@ -148,6 +156,13 @@ export default function OrderComponent(props) {
                 الطلبية جاهزة
             </button>
         }
+        else if(props.val.OrderStatus === 'In Preparation' || props.val.TakeAwayOrShipping === 'shipping')
+        {
+            return <button onClick={openInWaze} style={{width:'60px',height:'60px',padding:'2%'}} className='PendingInPreparationButtons'>
+                <img width={'90%'} src={waze} alt="waze" />
+            </button>
+        }
+
     }
   return (
     <div className='OrderComponentMainDiv'>
@@ -194,7 +209,6 @@ export default function OrderComponent(props) {
 
         {/* <h1>{props.val.Email}</h1> */}
         {/* <h1>{props.val.Notes}</h1> */}
-        {/* <h1>{props.val.Location}</h1> */}
 
     </div>
   )

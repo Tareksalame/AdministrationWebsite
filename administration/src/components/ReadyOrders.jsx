@@ -10,6 +10,8 @@ export default function ReadyOrders() {
     const {ReadyOrders,setReadyOrders} = useContext(userContext) 
     const nav = useNavigate()
 
+
+ 
     const showOrders = ()=>
     {
         return ReadyOrders.map((val)=>
@@ -20,7 +22,7 @@ export default function ReadyOrders() {
 
   return (
     <div>
-        <HomePage/>
+            <HomePage/>
             {showOrders()}
     </div>
   )
