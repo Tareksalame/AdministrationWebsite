@@ -55,7 +55,10 @@ app.get('/GetInPreparationOrders', async(req,res)=>
 })
 app.get('/GetReadyOrders', async(req,res)=>
 {
-    let temp = await OrderModel.find({OrderStatus:"Ready"});
+    let temp = await OrderModel.find({
+        TakeAwayOrShipping:"Take Away",
+        OrderStatus:"Ready"
+    });
     res.json(temp)
 })
 
