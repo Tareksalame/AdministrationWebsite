@@ -36,7 +36,10 @@ export default function OrderComponent(props) {
 
     const DetailsOfCart = ()=>
     {
-        return props.val.Cart.map((val)=>
+          // Use filter to exclude items with count equal to 0
+        const filteredCart = props.val.Cart.filter((val) => val.count !== 0);
+
+        return filteredCart.map((val)=>
         {
             return <div className='CartNamePriceAddDiv'>
                 <div className='NamePriceCountRowDiv'><h2>الوجبة</h2><h3>{val.name}</h3> </div>
