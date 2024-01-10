@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { useContext } from 'react';
 import userContext from '../userContext';
-import waze from '../images/wazeicon.png'
+import waze from '../images/wazeicon.png';
+import swap from '../sounds/364638__zevcuk__whoosh.wav'
+
 
 export default function OrderComponent(props) {
     const[flag,setFlag] = useState(false);
@@ -9,6 +11,7 @@ export default function OrderComponent(props) {
     const[display,setDisplay] = useState('none')
     const[ShowRelease,setShowRelease] = useState('تفاصيل الطلبية')
     const PhoneNumberLink = 'tel:' + props.val.phoneNumber
+    const audioSwap = new Audio(swap);
     
     const showDetails = ()=>
     {
@@ -87,6 +90,8 @@ export default function OrderComponent(props) {
 
     const StartPrepare = ()=>
     {
+        props.setOrdersCounter(props.ordersCounter - 1)
+        audioSwap.play()
         fetch('/StartPrepare', 
             {
                 headers:{
