@@ -234,3 +234,23 @@ header {
 
   color:var(--Link-color);
 }
+
+
+
+
+
+
+.counterOrdersFlag
+{
+  position: absolute;
+  left: 10%;
+  top: 1%;
+  border: 0px;
+  border-radius: 50px;
+  background-color: var(--secondryText-color);
+  width: 60px;
+  height: 60px;
+  color: var(--Link-color);
+  font-family: 'Cairo', sans-serif;
+
+}

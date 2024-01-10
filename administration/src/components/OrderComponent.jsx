@@ -7,7 +7,7 @@ import swap from '../sounds/364638__zevcuk__whoosh.wav'
 
 export default function OrderComponent(props) {
     const[flag,setFlag] = useState(false);
-    const {orders,setOrders,setInPreparationOrders,setReadyOrders,setReadyOrdersShipping} = useContext(userContext) 
+    const {counter,setCounter,orders,setOrders,setInPreparationOrders,setReadyOrders,setReadyOrdersShipping} = useContext(userContext) 
     const[display,setDisplay] = useState('none')
     const[ShowRelease,setShowRelease] = useState('تفاصيل الطلبية')
     const PhoneNumberLink = 'tel:' + props.val.phoneNumber
@@ -90,7 +90,6 @@ export default function OrderComponent(props) {
 
     const StartPrepare = ()=>
     {
-        props.setOrdersCounter(props.ordersCounter - 1)
         audioSwap.play()
         fetch('/StartPrepare', 
             {
@@ -116,6 +115,7 @@ export default function OrderComponent(props) {
                 {
                     fetch('/GetOrders').then((res)=>{return res.json()}).then((data) => {
                         setOrders([...data])
+                        setCounter(data.length)
                     }).catch((err)=>{return err})
                 }
             }).catch((err)=>{return err})

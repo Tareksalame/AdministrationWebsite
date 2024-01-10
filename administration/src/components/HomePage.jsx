@@ -3,15 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import userContext from '../userContext';
 
 
-export default function HomePage() {
+export default function HomePage(props) {
 
-    const{ReadyOrdersShipping,setReadyOrdersShipping,orders, setOrders,inPreparationOrders,setInPreparationOrders,ReadyOrders,setReadyOrders} = useContext(userContext)
+    const{counter,setCounter,ReadyOrdersShipping,setReadyOrdersShipping,orders, setOrders,inPreparationOrders,setInPreparationOrders,ReadyOrders,setReadyOrders} = useContext(userContext)
 
     const nav = useNavigate()
 
     const fetchOrders = () => {
         fetch('/GetOrders').then((res)=>{return res.json()}).then((data) => {
             setOrders([...data])
+            setCounter(data.length)
         }).catch((err)=>{return err})
             nav('/Orders')
       };
@@ -34,12 +35,17 @@ export default function HomePage() {
             nav('/ReadyOrdersShipping')
       };
 
-
+    //   setTimeout(() => {
+    //     fetch('/GetOrders').then((res)=>{return res.json()}).then((data) => {
+    //         setOrders([...data])
+    //         setCounter(data.length)
+    //     }).catch((err)=>{return err})
+    // }, 10000);
 
   return (
     <div className='HeaderMenuHomePage'>
-
-        <button onClick={fetchOrders}>الطلبيات</button>
+        <h1 className='counterOrdersFlag'>{counter}</h1>
+        <button onClick={fetchOrders}> الطلبيات</button>
         <button onClick={fetchInPreparationOrders}>قيد التحضير</button>
         <button onClick={fetchReadyOrders}>جاهزة</button>
         <button onClick={fetchReadyOrdersShipping}>للتوصيل</button>
