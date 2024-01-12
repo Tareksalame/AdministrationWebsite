@@ -7,7 +7,7 @@ import notification from '../sounds/352650__foolboymedia__piano-notification-4.m
 import swap from '../sounds/364638__zevcuk__whoosh.wav'
 
 export default function OrderManagmentComponent() {
-    const {orders,setOrders,counter,setCounter} = useContext(userContext) 
+    const {orders,setOrders,counter,setCounter,setInPreparationCounter,setInPreparationOrders} = useContext(userContext) 
     const nav = useNavigate()
     const audioRef = new Audio(notification);
 
@@ -17,7 +17,7 @@ export default function OrderManagmentComponent() {
             setOrders([...data])
             setCounter(data.length)
         }).catch((err)=>{return err})
-    }, 10000);
+    }, 60000);
 
     const showOrders = ()=>
     {
@@ -30,6 +30,10 @@ export default function OrderManagmentComponent() {
     useEffect(()=>
     {
             audioRef.play()
+            fetch('/GetInPreparationOrders').then((res)=>{return res.json()}).then((data) => {
+                setInPreparationOrders([...data])
+                setInPreparationCounter(data.length);
+            }).catch((err)=>{return err})
     },[counter])
 
   return (

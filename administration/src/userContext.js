@@ -21,6 +21,10 @@ export const UsersProvider = ({children})=>
     const[ReadyOrdersShipping,setReadyOrdersShipping] = useState([])
 
     const [counter,setCounter] = useState(null)
+    const [InPreparationCounter,setInPreparationCounter] = useState(null)
+    const [ReadyCounter,setReadyCounter] = useState(null)
+    const [ShippingCounter,setShippingCounter] = useState(null)
+
 
 
 
@@ -110,7 +114,8 @@ const calculateDistance = () => {
 
 
     return (
-    <userContext.Provider value={{counter,setCounter,ReadyOrdersShipping,setReadyOrdersShipping,ReadyOrders,setReadyOrders,
+    <userContext.Provider value={{ShippingCounter,setShippingCounter,
+      ReadyCounter,setReadyCounter,InPreparationCounter,setInPreparationCounter,counter,setCounter,ReadyOrdersShipping,setReadyOrdersShipping,ReadyOrders,setReadyOrders,
       inPreparationOrders,setInPreparationOrders,orders, setOrders,OrderNumber,setOrderNumber,
         FinalPrice,SetFinalPrice,calculateDistance,FinalCart,setFinalCart,
     name,setName,PhoneNumber,setPhoneNumber,City,setCity,Email,setEmail,Notes,setNotes,

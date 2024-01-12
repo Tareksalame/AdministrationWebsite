@@ -24,12 +24,12 @@ header {
 .HeaderMenuHomePage
 {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 100%;
   background-color: #2980b9;
-  padding-top: 10%;
+  /* padding-top: 5%; */
 }
 .HeaderMenuHomePage button
 {
@@ -45,11 +45,27 @@ header {
   transition: all 0.4s ease-in-out;
   outline: none;
   border-radius: 10px;
-  margin-bottom: 5%;
-  margin-top: 5%;
   color: var(--Link-color);
 
 }
+.CountersDiv
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.HeaderButtons
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2%;
+  width: 100%;
+}
+
 /* ____________________________________________OrdersComponentMainDiv_______________________________________ */
 .OrdersComponentMainDiv
 {
@@ -242,14 +258,13 @@ header {
 
 .counterOrdersFlag
 {
-  position: absolute;
-  left: 10%;
-  top: 1%;
+  position: relative;
   border: 0px;
   border-radius: 50px;
   background-color: var(--secondryText-color);
   width: 60px;
   height: 60px;
+  margin-bottom: 0px;
   color: var(--Link-color);
   font-family: 'Cairo', sans-serif;
 

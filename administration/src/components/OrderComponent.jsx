@@ -7,7 +7,8 @@ import swap from '../sounds/364638__zevcuk__whoosh.wav'
 
 export default function OrderComponent(props) {
     const[flag,setFlag] = useState(false);
-    const {counter,setCounter,orders,setOrders,setInPreparationOrders,setReadyOrders,setReadyOrdersShipping} = useContext(userContext) 
+    const {InPreparationCounter,setInPreparationCounter,setReadyCounter,setShippingCounter,
+        counter,setCounter,orders,setOrders,setInPreparationOrders,setReadyOrders,setReadyOrdersShipping} = useContext(userContext) 
     const[display,setDisplay] = useState('none')
     const[ShowRelease,setShowRelease] = useState('تفاصيل الطلبية')
     const PhoneNumberLink = 'tel:' + props.val.phoneNumber
@@ -145,6 +146,7 @@ export default function OrderComponent(props) {
                 {
                     fetch('/GetInPreparationOrders').then((res)=>{return res.json()}).then((data) => {
                         setInPreparationOrders([...data])
+                        setInPreparationCounter(data.length)
                     }).catch((err)=>{return err})
                 }
             }).catch((err)=>{return err})
@@ -174,6 +176,7 @@ export default function OrderComponent(props) {
                 {
                     fetch('/GetReadyOrders').then((res)=>{return res.json()}).then((data) => {
                         setReadyOrders([...data])
+                        setReadyCounter(data.length)
                     }).catch((err)=>{return err})
                 }
             }).catch((err)=>{return err})
@@ -203,6 +206,7 @@ export default function OrderComponent(props) {
                 {
                     fetch('/GetReadyOrdersShipping').then((res)=>{return res.json()}).then((data) => {
                         setReadyOrdersShipping([...data])
+                        setShippingCounter(data.length)
                     }).catch((err)=>{return err})
                 }
             }).catch((err)=>{return err})
