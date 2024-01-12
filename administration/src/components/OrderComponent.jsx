@@ -47,8 +47,8 @@ export default function OrderComponent(props) {
         {
             return <div className='CartNamePriceAddDiv'>
                 <div className='NamePriceCountRowDiv'><h2>الوجبة</h2><h3>{val.name}</h3> </div>
+                <div className='NamePriceCountRowDiv'><h2>عدد</h2>--------------<h3>{val.count}</h3> </div>
                 <div className='NamePriceCountRowDiv'><h2>سعر للوجبة</h2><h3>{val.price}</h3> </div>
-                <div className='NamePriceCountRowDiv'><h2>عدد</h2><h3>{val.count}</h3> </div>
                 <div style={{width:'100%'}}>
                 {val.additions.map((addition)=>
                 {
