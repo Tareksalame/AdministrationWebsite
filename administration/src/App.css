@@ -89,6 +89,7 @@ header {
   justify-content: center;
   align-items: center;
   border-bottom: 5px solid var(--primary-color);
+  padding-bottom: 3%;
 
 }
 .NamePhoneCityOrderComponentDiv
@@ -137,6 +138,20 @@ header {
   font-family: 'Cairo', sans-serif;
   color: var(--mainText-color);
   margin-right: 2%;
+}
+.OrderNumberTitle
+{
+  font-size: 18px;
+  font-family: 'Cairo', sans-serif;
+  color: var(--mainText-color);
+  margin-right: 2%;
+}
+.OrderNumberNumber
+{
+  font-size: 15px;
+  font-family: 'Cairo', sans-serif;
+  color: var(--secondryText-color);
+  margin-left: 2%;
 }
 .NamePhoneCityOrderComponentDiv h2
 {

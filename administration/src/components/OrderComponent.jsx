@@ -253,15 +253,19 @@ export default function OrderComponent(props) {
 
   return (
     <div className='OrderComponentMainDiv'>
-        <div className='NamePhoneCityOrderComponentDiv'>
         <div style={{flexDirection:'column'}}>
-        <h1 style={{marginRight:'0px',marginBottom:'3%'}}>رقم الطلبية</h1>
-        <h2 style={{fontSize:'25px',marginLeft:'0px',marginBottom:'3%'}}>{props.val.OrderNumber}</h2>
+        <h1 className='OrderNumberTitle' style={{marginRight:'0px',marginBottom:'3%'}}>رقم الطلبية</h1>
+        <h2 className='OrderNumberNumber' style={{fontSize:'25px',marginLeft:'0px',marginBottom:'3%'}}>{props.val.OrderNumber}</h2>
         <div style={{display:'flex',flexDirection:'row',justifyContent:'space-around',alignItems:'center'}}>
         {inPreparation()}
         {OrderStatusShow()}
         </div>
         </div>
+        <button className='ShowDetailsButton' onClick={showDetails}>{ShowRelease}</button>
+        <div className='DetailsMainDiv' style={{display:display}}>
+        {DetailsOfCart()}
+        </div>
+        <div className='NamePhoneCityOrderComponentDiv'>
         <div>
         <h1>الاسم</h1>
         <h2>{props.val.name}</h2>
@@ -289,10 +293,7 @@ export default function OrderComponent(props) {
             </textarea>
         </div>
         </div>
-        <button className='ShowDetailsButton' onClick={showDetails}>{ShowRelease}</button>
-        <div className='DetailsMainDiv' style={{display:display}}>
-        {DetailsOfCart()}
-        </div>
+        
 
         {/* <h1>{props.val.Email}</h1> */}
         {/* <h1>{props.val.Notes}</h1> */}
